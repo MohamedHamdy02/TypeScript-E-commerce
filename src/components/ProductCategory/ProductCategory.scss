@@ -1,0 +1,45 @@
+.similar-products-container {
+  margin: 5rem 0;
+  text-align: center;
+
+  h1 {
+    color: #324d67;
+    margin-bottom: 2rem;
+  }
+
+  .similar-products-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .similar-item-card {
+      margin: 1rem 1rem;
+      .card-image {
+        border-radius: 15px;
+        background-color: #ebebeb;
+        cursor: pointer;
+        transition: 0.4s ease-in-out;
+
+        img {
+          transition: 0.4s ease-in-out;
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+
+        &:hover {
+          background-color: #ff5733;
+        }
+      }
+
+      h4 {
+        color: #324d67;
+        margin: 1rem 0;
+      }
+      h3 {
+        color: #ff5733;
+      }
+    }
+  }
+}
