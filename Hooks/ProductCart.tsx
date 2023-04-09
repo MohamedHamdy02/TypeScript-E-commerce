@@ -13,31 +13,35 @@ export const ProductCart = ({ children }: CartContextProviderProps) => {
       const storage = localStorage.getItem(name);
 
       if (storage !== null)
-        return JSON.parse(localStorage.getItem(name) as string);
+        return JSON.parse(localStorage.getItem(name) as any);
 
       if (name === "cartItems") return [];
-
-      if (name === 'totalPrice' == null) return 0;
 
       return 0;
     }
   };
 
   const [showCart, setShowCart] = useState<boolean>(false);
+
   const [cartItems, setCartItems] = useState<Array<any>>(
     getLocalStorage("cartItems")
   );
+
   const [totalPrice, setTotalPrice] = useState<number>(
     getLocalStorage("totalPrice")
   );
+
   const [totalQuantities, setTotalQuantities] = useState<number>(
     getLocalStorage("totalQuantities")
   );
+
   const [qty, setQty] = useState<number>(1);
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
     localStorage.setItem("totalPrice", JSON.stringify(totalPrice));
+
     localStorage.setItem("totalQuantities", JSON.stringify(totalQuantities));
   }, [cartItems, totalPrice, totalQuantities]);
 
@@ -59,7 +63,8 @@ export const ProductCart = ({ children }: CartContextProviderProps) => {
 
     if (checkProductInCart) {
       setTotalPrice(
-        totalPrice + product?.variants?.[0]?.pricing?.price?.gross?.amount * quantity
+        totalPrice +
+          product?.variants?.[0]?.pricing?.price?.gross?.amount * quantity
       );
       setTotalQuantities(totalQuantities + quantity);
 
@@ -79,7 +84,8 @@ export const ProductCart = ({ children }: CartContextProviderProps) => {
       toast.success(`${qty} ${product.name} added to your cart`);
     } else {
       setTotalPrice(
-        totalPrice + product?.variants?.[0]?.pricing?.price?.gross?.amount * quantity
+        totalPrice +
+          product?.variants?.[0]?.pricing?.price?.gross?.amount * quantity
       );
       setTotalQuantities(totalQuantities + quantity);
       product.quantity = quantity;

@@ -1,10 +1,9 @@
 import { useProductCart } from "@/Hooks/ProductCart";
 import { Product, ProductCountableConnection } from "@/src/gql/graphql";
 import React, { useState } from "react";
-import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
+import Rating from "../Rating/Rating";
 
 type Props = {
   productID: Product;
@@ -40,17 +39,13 @@ const ProductDetails = ({ relatedProduct, productID }: Props) => {
         <div className="desc-container">
           <h1>{productID.name}</h1>
           <div className="reviews">
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiOutlineStar />
-            <p>(20)</p>
+            <Rating />
           </div>
           <div className="details">
             <h4>Details :</h4>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, explicabo!
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque,
+              explicabo!
             </p>
           </div>
           <div className="price">

@@ -60,15 +60,15 @@
       }
 
       .reviews {
-        display: flex;
-        align-items: center;
         margin-bottom: 1rem;
 
-        svg {
-          color: #ff5733;
+        input[type="radio"] {
+          display: none;
         }
-        p {
-          margin-left: 0.5rem;
+
+        svg {
+          cursor: pointer;
+          font-size: 19px;
         }
       }
 
