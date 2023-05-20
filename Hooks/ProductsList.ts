@@ -34,12 +34,9 @@ export const Q_getProducts = gql`
 export const ProdcutsList = () => {
   const { data, error, loading } = useQuery(Q_getProducts);
 
-
   return {
     data,
     error,
     loading,
   };
 };
-
-

@@ -9,7 +9,7 @@ type TProducts = {
 };
 
 const Products: React.FC<TProducts> = ({ keyword }) => {
-  var { data } = useQuery<{ products: ProductCountableConnection }>(
+  const { data } = useQuery<{ products: ProductCountableConnection }>(
     Q_searchProduct,
     {
       variables: {
@@ -41,7 +41,9 @@ const Products: React.FC<TProducts> = ({ keyword }) => {
                   <h4>{name?.split(" ").slice(0, 3).join(" ")}</h4>
 
                   <div className="price-container">
-                    <h3>${variants?.[0]?.pricing?.price?.gross?.amount.toFixed(0)}</h3>
+                    <h3>
+                      ${variants?.[0]?.pricing?.price?.gross?.amount.toFixed(0)}
+                    </h3>
                   </div>
 
                   <Link

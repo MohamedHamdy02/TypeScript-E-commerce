@@ -10,7 +10,7 @@ import { useProductCart } from "@/Hooks/ProductCart";
 import { Image, ProductVariant, TaxedMoney } from "@/src/gql/graphql";
 
 const Cart = () => {
-  let cartRef = useRef() as MutableRefObject<HTMLDivElement>;
+  const cartRef = useRef() as MutableRefObject<HTMLDivElement>;
 
   const {
     totalPrice,
@@ -22,7 +22,7 @@ const Cart = () => {
   } = useProductCart();
 
   useEffect(() => {
-    let closeModalHandler = (event: MouseEvent) => {
+    const closeModalHandler = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       if (!cartRef.current.contains(target)) {
         setShowCart(false);
