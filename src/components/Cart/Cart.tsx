@@ -7,7 +7,8 @@ import {
 } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 import { useProductCart } from "@/Hooks/ProductCart";
-import { Image, ProductVariant, TaxedMoney } from "@/src/gql/graphql";
+import { ProductVariant, TaxedMoney } from "@/src/gql/graphql";
+import Image from "next/image";
 
 const Cart = () => {
   const cartRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -33,7 +34,7 @@ const Cart = () => {
     return () => {
       document.removeEventListener("mousedown", closeModalHandler);
     };
-  }, []);
+  }, [setShowCart]);
 
   return (
     <div className="cart-wrapper">
@@ -69,7 +70,9 @@ const Cart = () => {
             cartItems.map(
               (item: {
                 variants: Array<ProductVariant>;
-                thumbnail: Image;
+                thumbnail: {
+                  url: string;
+                };
                 url: string;
                 slug: string;
                 name: string;
@@ -77,9 +80,13 @@ const Cart = () => {
                 quantity: number;
               }) => (
                 <div className="product" key={item?.slug}>
-                  <img
+                  <Image
                     src={item?.thumbnail?.url}
+                    alt={item.name}
+                    width={150}
+                    height={150}
                     className="cart-product-image"
+                    priority
                   />
                   <div className="item-desc">
                     <div className="flex top">

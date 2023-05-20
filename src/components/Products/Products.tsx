@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { Q_searchProduct } from "../../../Hooks/SearchProduct";
 import Link from "next/link";
 import { ProductCountableConnection } from "@/src/gql/graphql";
+import Image from "next/image";
 
 type TProducts = {
   keyword?: string;
@@ -34,7 +35,8 @@ const Products: React.FC<TProducts> = ({ keyword }) => {
                   }}
                   className="img-container"
                 >
-                  <img src={thumbnail?.url} alt={name} />
+                  <Image src={`${thumbnail?.url}`} alt={id} width={256} height={256} priority/>
+                  {/* <img src={thumbnail?.url} alt={name} /> */}
                 </Link>
 
                 <div className="item-content">

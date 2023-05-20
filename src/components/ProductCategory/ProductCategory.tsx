@@ -1,10 +1,13 @@
-import { Category, Image, ProductVariant } from "@/src/gql/graphql";
+import { Category, ProductVariant } from "@/src/gql/graphql";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 type Props = {
   name: string;
-  thumbnail: Image;
+  thumbnail: {
+    url: string;
+  };
   variants: Array<ProductVariant>;
   slug: string;
   category: Category;
@@ -26,7 +29,13 @@ const ProductCategory = ({
             query: { slug, category: category?.slug },
           }}
         >
-          <img src={thumbnail.url} alt={name} />
+          <Image
+            src={thumbnail.url}
+            alt={name}
+            width={256}
+            height={256}
+            priority
+          />
         </Link>
       </div>
 

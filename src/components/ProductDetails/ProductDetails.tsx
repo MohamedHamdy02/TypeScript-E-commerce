@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 import Rating from "../Rating/Rating";
+import Image from "next/image";
 
 type Props = {
   productID: Product;
@@ -21,13 +22,23 @@ const ProductDetails = ({ relatedProduct, productID }: Props) => {
       <div className="details-row">
         <div>
           <div className="image-container">
-            <img src={productID?.media?.[index]?.url} alt={productID.name} />
+            <Image
+              src={productID?.media?.[index]?.url}
+              alt={productID.slug}
+              width={400}
+              height={370}
+              priority
+            />
           </div>
           <div className="small-images-container">
             {productID?.media?.map((item, i) => (
-              <img
-                key={i}
+              <Image
                 src={item?.url}
+                alt={productID.name}
+                width={80}
+                height={80}
+                priority
+                key={i}
                 className={
                   i === index ? "small-image selected-image" : "small-image"
                 }
